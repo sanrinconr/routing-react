@@ -20,6 +20,9 @@ export default function App() {
             <li>
               <Link to="/users">Users</Link>
             </li>
+            <li>
+              <Link to="/img">img</Link>
+            </li>
           </ul>
         </nav>
 
@@ -29,6 +32,9 @@ export default function App() {
           <Route path="/img/:id" children={({match})=>{
             return <Img id={match.params.id}/>
           }}/>
+          <Route path="/img">
+            <Img></Img>
+          </Route>
           <Route path="/about">
             <About />
           </Route>
@@ -55,6 +61,9 @@ function Users() {
   return <h2>Users</h2>;
 }
 function Img({id}){
-  console.log("imgg")
+  console.log(id)
+  if(id === undefined){
+    return <h2>Hola! agrega un id en el url para ver el routing con parametros /img/1234 por ejemplo :)</h2>
+  }
   return <h2>{id}</h2>
 }
